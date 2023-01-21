@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "run-p -l -c --aggregate-output lint:*",
+    "lint:eslint": "next lint",
+    "lint:prettier": "prettier --check .",
+    "fix": "run-s -l -c fix:*",
+    "fix:eslint": "next lint --fix",
+    "fix:prettier": "prettier --write .",
     "prepare": "husky install"
   },
   "dependencies": {
