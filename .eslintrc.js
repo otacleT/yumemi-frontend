@@ -88,6 +88,10 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['src/pages/**/*.tsx', 'src/pages/api/**/*.ts'],
+      rules: {'import/no-default-export': 'off'},
+    },
+    {
       files: ['**/?(*.)+(spec|test).[jt]s?(x)'],
       extends: ['plugin:testing-library/react'],
     },
