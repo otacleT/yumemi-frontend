@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
 import type {GetStaticProps, NextPage} from 'next'
+import {useEffect, useState} from 'react'
 
 import {Button} from '@/component/Button'
+import type {ChartData} from '@/type/ChartData'
 import type {Prefecture} from '@/type/Prefecture'
 import type {Prefectures} from '@/type/Prefectures'
 
@@ -29,13 +31,24 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPage<Prefectures> = (props) => {
   const {prefectures} = props
+  const [chartData, setChartData] = useState<ChartData[]>([])
+  useEffect(() => {
+    console.info(chartData)
+  }, [chartData])
   return (
     <div css={[container, wrapper]}>
       <div>
         <h2 css={title}>都道府県一覧</h2>
         <div css={leftWrapper}>
           {prefectures.map(({prefCode, prefName}: Prefecture) => {
-            return <Button key={prefCode} prefCode={prefCode} prefName={prefName} />
+            return (
+              <Button
+                key={prefCode}
+                prefName={prefName}
+                prefCode={prefCode}
+                setChartData={setChartData}
+              />
+            )
           })}
         </div>
       </div>
