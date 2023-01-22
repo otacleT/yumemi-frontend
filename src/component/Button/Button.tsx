@@ -11,13 +11,18 @@ type Prefecture = {
   setChartData: Dispatch<SetStateAction<ChartData[]>>
 }
 
+type Data = {
+  year: number
+  value: number
+}
+
 /**
  * @package
  */
 export const Button: FC<Prefecture> = (props) => {
-  const {prefName, setChartData} = props
+  const {prefCode, prefName, setChartData} = props
   const [isChecked, setIsChecked] = useState(false)
-  const handleChange = async (name: string) => {
+  const handleChange = async (code: number, name: string) => {
     if (isChecked) {
       setChartData((prev) => {
         return prev.filter((item) => {
@@ -25,8 +30,18 @@ export const Button: FC<Prefecture> = (props) => {
         })
       })
     } else {
+      const requestHeaders: HeadersInit = new Headers()
+      requestHeaders.append('text', code.toString())
+      const res = await fetch('/api/population', {
+        method: 'GET',
+        headers: requestHeaders,
+      })
+      const data = await res.json()
+      const population = data.result.data[0].data.map((item: Data) => {
+        return item.value
+      })
       setChartData((prev) => {
-        return [...prev, {name: name, data: [0, 1, 2, 3, 4, 5]}]
+        return [...prev, {name: name, data: population}]
       })
     }
     setIsChecked(!isChecked)
@@ -38,7 +53,7 @@ export const Button: FC<Prefecture> = (props) => {
         type='checkbox'
         checked={isChecked}
         onChange={() => {
-          return handleChange(prefName)
+          return handleChange(prefCode, prefName)
         }}
       />
       {prefName}
