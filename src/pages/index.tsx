@@ -35,7 +35,7 @@ const Home: NextPage<Prefectures> = (props) => {
         <h2 css={title}>都道府県一覧</h2>
         <div css={leftWrapper}>
           {prefectures.map(({prefCode, prefName}: Prefecture) => {
-            return <Button key={prefCode} name={prefName} />
+            return <Button key={prefCode} prefCode={prefCode} prefName={prefName} />
           })}
         </div>
       </div>

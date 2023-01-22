@@ -4,13 +4,15 @@ import type {FC} from 'react'
 import {useState} from 'react'
 
 type Prefecture = {
-  name: string
+  prefCode: number
+  prefName: string
 }
 
 /**
  * @package
  */
-export const Button: FC<Prefecture> = ({name}) => {
+export const Button: FC<Prefecture> = (props) => {
+  const {prefName} = props
   const [isChecked, setIsChecked] = useState(false)
 
   return (
@@ -23,7 +25,7 @@ export const Button: FC<Prefecture> = ({name}) => {
           return setIsChecked(!isChecked)
         }}
       />
-      {name}
+      {prefName}
     </label>
   )
 }
