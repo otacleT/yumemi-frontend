@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 import type {GetStaticProps, NextPage} from 'next'
-import {useEffect, useState} from 'react'
+import {useMemo, useState} from 'react'
 
 import {Button} from '@/component/Button'
 import type {ChartData} from '@/type/ChartData'
@@ -32,8 +34,36 @@ export const getStaticProps: GetStaticProps = async () => {
 const Home: NextPage<Prefectures> = (props) => {
   const {prefectures} = props
   const [chartData, setChartData] = useState<ChartData[]>([])
-  useEffect(() => {
-    console.info(chartData)
+  const options = useMemo(() => {
+    return {
+      chart: {
+        type: 'line',
+      },
+      title: {
+        text: undefined,
+      },
+      xAxis: {
+        title: {
+          text: '年度',
+        },
+      },
+      yAxis: {
+        title: {
+          text: '人口数',
+        },
+      },
+      plotOptions: {
+        column: {
+          pointStart: 100000,
+          pointInterval: 100000,
+        },
+        line: {
+          pointInterval: 5,
+          pointStart: 1980,
+        },
+      },
+      series: [...chartData],
+    }
   }, [chartData])
   return (
     <div css={[container, wrapper]}>
@@ -52,7 +82,9 @@ const Home: NextPage<Prefectures> = (props) => {
           })}
         </div>
       </div>
-      <div></div>
+      <div css={chart}>
+        <HighchartsReact highcharts={Highcharts} options={options} />
+      </div>
     </div>
   )
 }
@@ -69,9 +101,13 @@ const wrapper = css`
   display: grid;
   gap: 10px;
   grid-template-columns: minmax(340px, 2fr) 3fr;
+  align-items: center;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
+`
+const chart = css`
+  width: 100%;
 `
 const title = css`
   font-size: 20px;
