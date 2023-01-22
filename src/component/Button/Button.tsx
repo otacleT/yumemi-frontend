@@ -1,20 +1,36 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
-import type {FC} from 'react'
+import type {Dispatch, FC, SetStateAction} from 'react'
 import {useState} from 'react'
+
+import type {ChartData} from '@/type/ChartData'
 
 type Prefecture = {
   prefCode: number
   prefName: string
+  setChartData: Dispatch<SetStateAction<ChartData[]>>
 }
 
 /**
  * @package
  */
 export const Button: FC<Prefecture> = (props) => {
-  const {prefName} = props
+  const {prefName, setChartData} = props
   const [isChecked, setIsChecked] = useState(false)
-
+  const handleChange = async (name: string) => {
+    if (isChecked) {
+      setChartData((prev) => {
+        return prev.filter((item) => {
+          return item.name !== name ? item : null
+        })
+      })
+    } else {
+      setChartData((prev) => {
+        return [...prev, {name: name, data: [0, 1, 2, 3, 4, 5]}]
+      })
+    }
+    setIsChecked(!isChecked)
+  }
   return (
     <label css={label(isChecked)}>
       <input
@@ -22,7 +38,7 @@ export const Button: FC<Prefecture> = (props) => {
         type='checkbox'
         checked={isChecked}
         onChange={() => {
-          return setIsChecked(!isChecked)
+          return handleChange(prefName)
         }}
       />
       {prefName}
