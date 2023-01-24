@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
 import type {Dispatch, FC, SetStateAction} from 'react'
+import {useCallback} from 'react'
 import {useState} from 'react'
 
 import type {ChartData} from '@/type/ChartData'
@@ -22,16 +23,16 @@ type Data = {
 export const Button: FC<Prefecture> = (props) => {
   const {prefCode, prefName, setChartData} = props
   const [isChecked, setIsChecked] = useState(false)
-  const handleChange = async (code: number, name: string) => {
+  const handleChange = useCallback(async () => {
     if (isChecked) {
       setChartData((prev) => {
         return prev.filter((item) => {
-          return item.name !== name ? item : null
+          return item.name !== prefName
         })
       })
     } else {
       const requestHeaders: HeadersInit = new Headers()
-      requestHeaders.append('text', code.toString())
+      requestHeaders.append('text', prefCode.toString())
       const res = await fetch('/api/population', {
         method: 'GET',
         headers: requestHeaders,
@@ -41,21 +42,16 @@ export const Button: FC<Prefecture> = (props) => {
         return item.value
       })
       setChartData((prev) => {
-        return [...prev, {name: name, data: population}]
+        return [...prev, {name: prefName, data: population}]
       })
     }
-    setIsChecked(!isChecked)
-  }
+    setIsChecked((prev) => {
+      return !prev
+    })
+  }, [isChecked, prefCode, prefName, setChartData])
   return (
     <label css={label(isChecked)}>
-      <input
-        css={check}
-        type='checkbox'
-        checked={isChecked}
-        onChange={() => {
-          return handleChange(prefCode, prefName)
-        }}
-      />
+      <input css={check} type='checkbox' checked={isChecked} onChange={handleChange} />
       {prefName}
     </label>
   )
