@@ -20,7 +20,7 @@ type Data = {
 /**
  * @package
  */
-export const Button: FC<Prefecture> = (props) => {
+export const PrefectureItem: FC<Prefecture> = (props) => {
   const {prefCode, prefName, setChartData} = props
   const [isChecked, setIsChecked] = useState(false)
   const handleChange = useCallback(async () => {
@@ -50,10 +50,12 @@ export const Button: FC<Prefecture> = (props) => {
     })
   }, [isChecked, prefCode, prefName, setChartData])
   return (
-    <label css={label(isChecked)}>
-      <input css={check} type='checkbox' checked={isChecked} onChange={handleChange} />
-      {prefName}
-    </label>
+    <li>
+      <label css={label(isChecked)}>
+        <input css={check} type='checkbox' checked={isChecked} onChange={handleChange} />
+        {prefName}
+      </label>
+    </li>
   )
 }
 
