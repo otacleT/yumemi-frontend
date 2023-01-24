@@ -49,6 +49,9 @@ const container = css`
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
+  @media screen and (max-width: 520px) {
+    padding: 40px 10px;
+  }
 `
 const wrapper = css`
   display: grid;
