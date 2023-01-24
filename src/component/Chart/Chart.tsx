@@ -20,6 +20,7 @@ export const Chart: FC<Props> = (props) => {
     return {
       chart: {
         type: 'line',
+        height: '65%',
       },
       title: {
         text: undefined,
@@ -31,11 +32,17 @@ export const Chart: FC<Props> = (props) => {
       xAxis: {
         title: {
           text: '年度',
+          align: 'high',
         },
       },
       yAxis: {
         title: {
           text: '人口数',
+          align: 'high',
+          textAlign: 'high',
+          reserveSpace: false,
+          rotation: 0,
+          y: -10,
         },
       },
       plotOptions: {
