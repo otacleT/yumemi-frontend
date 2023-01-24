@@ -65,15 +65,13 @@ export const Chart: FC<Props> = (props) => {
   }, [chartData])
   return (
     <div css={chart}>
-      <div css={chart}>
-        {chartData.length === 0 ? (
-          <div css={noData}>
-            <p>都道府県を選択してください</p>
-          </div>
-        ) : (
-          <HighchartsReact highcharts={Highcharts} options={options} />
-        )}
-      </div>
+      {chartData.length === 0 ? (
+        <div css={noData}>
+          <p>都道府県を選択してください</p>
+        </div>
+      ) : (
+        <HighchartsReact highcharts={Highcharts} options={options} />
+      )}
     </div>
   )
 }
