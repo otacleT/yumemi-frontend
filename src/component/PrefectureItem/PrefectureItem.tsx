@@ -46,7 +46,7 @@ const label = (isChecked: boolean) => {
       align-items: center;
       text-decoration: none;
       color: #000;
-      border-radius: 25px;
+      border-radius: 18px;
       ${isChecked ? 'border: 3px solid rgba(65, 164, 253, 1);' : 'border: 3px solid #d9d9d9;'}
       position: relative;
       cursor: pointer;
@@ -62,6 +62,7 @@ const label = (isChecked: boolean) => {
         font-size: 13px;
         width: 95px;
         height: 34px;
+        border-radius: 17px;
       }
     `,
   ]
