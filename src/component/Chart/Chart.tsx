@@ -97,4 +97,10 @@ const noData = css`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  @media screen and (max-width: 520px) {
+    padding-top: 70%;
+    p {
+      font-size: 18px;
+    }
+  }
 `
