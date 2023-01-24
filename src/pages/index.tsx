@@ -52,7 +52,7 @@ const container = css`
 `
 const wrapper = css`
   display: grid;
-  gap: 10px;
+  gap: 20px;
   grid-template-columns: minmax(340px, 2fr) 3fr;
   align-items: center;
   @media (max-width: 768px) {

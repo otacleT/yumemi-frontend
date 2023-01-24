@@ -20,18 +20,29 @@ export const Chart: FC<Props> = (props) => {
     return {
       chart: {
         type: 'line',
+        height: '65%',
       },
       title: {
         text: undefined,
       },
+      subtitle: {
+        text: '出典：RESAS（地域経済分析システム）',
+        align: 'right',
+      },
       xAxis: {
         title: {
           text: '年度',
+          align: 'high',
         },
       },
       yAxis: {
         title: {
           text: '人口数',
+          align: 'high',
+          textAlign: 'high',
+          reserveSpace: false,
+          rotation: 0,
+          y: -10,
         },
       },
       plotOptions: {
@@ -54,8 +65,15 @@ export const Chart: FC<Props> = (props) => {
   }, [chartData])
   return (
     <div css={chart}>
-      <HighchartsReact highcharts={Highcharts} options={options} />
-      <p css={sourceTxt}>出典：RESAS（地域経済分析システム）</p>
+      <div css={chart}>
+        {chartData.length === 0 ? (
+          <div css={noData}>
+            <p>都道府県を選択してください</p>
+          </div>
+        ) : (
+          <HighchartsReact highcharts={Highcharts} options={options} />
+        )}
+      </div>
     </div>
   )
 }
@@ -63,9 +81,21 @@ export const Chart: FC<Props> = (props) => {
 const chart = css`
   width: 100%;
 `
-const sourceTxt = css`
-  font-size: 13px;
-  font-weight: 400;
-  text-align: right;
-  margin-top: 20px;
+const noData = css`
+  width: 100%;
+  height: 0;
+  padding-top: 65%;
+  background-image: linear-gradient(90deg, #41a4fd, #677efa);
+  border-radius: 10px;
+  position: relative;
+  p {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `

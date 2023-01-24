@@ -26,7 +26,7 @@ const section = css`
     display: block;
     width: 100%;
     height: 8px;
-    background: linear-gradient(rgba(65, 164, 253, 1), transparent);
+    background: linear-gradient(#41a4fd, transparent);
   }
 `
 const container = css`
