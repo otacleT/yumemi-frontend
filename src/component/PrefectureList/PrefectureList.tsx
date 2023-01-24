@@ -35,7 +35,7 @@ export const PrefectureList: FC<Props> = (props) => {
 
 const title = css`
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
 `
 const list = css`
   width: 100%;

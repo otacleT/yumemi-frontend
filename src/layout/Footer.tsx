@@ -20,4 +20,5 @@ const section = css`
 `
 const copyright = css`
   font-size: 12px;
+  font-weight: 400;
 `

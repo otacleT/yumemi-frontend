@@ -37,13 +37,14 @@ const container = css`
 `
 const title = css`
   font-size: 36px;
-  font-weight: bold;
+  font-weight: 900;
   text-align: center;
   letter-spacing: 0.1em;
   line-height: 1.1;
   padding: 25px 0;
   span {
     font-size: 22px;
+    font-weight: 700;
     padding-top: 5px;
   }
 `

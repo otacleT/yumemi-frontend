@@ -38,7 +38,7 @@ const label = (isChecked: boolean) => {
   return [
     css`
       font-size: 15px;
-      font-weight: bold;
+      font-weight: 700;
       display: flex;
       width: 110px;
       height: 36px;
@@ -52,7 +52,7 @@ const label = (isChecked: boolean) => {
       cursor: pointer;
       ::before {
         font-size: 15px;
-        font-weight: bold;
+        font-weight: 700;
         content: ${isChecked ? '"✓"' : '"＋"'};
         display: inline-block;
         padding-right: 10px;
