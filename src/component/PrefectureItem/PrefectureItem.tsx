@@ -46,8 +46,8 @@ const label = (isChecked: boolean) => {
       align-items: center;
       text-decoration: none;
       color: #000;
-      border-radius: 25px;
-      ${isChecked ? 'border: 3px solid rgba(65, 164, 253, 1);' : 'border: 3px solid #d9d9d9;'}
+      border-radius: 18px;
+      ${isChecked ? 'border: 3px solid #41a4fd;' : 'border: 3px solid #d9d9d9;'}
       position: relative;
       cursor: pointer;
       ::before {
@@ -56,7 +56,13 @@ const label = (isChecked: boolean) => {
         content: ${isChecked ? '"✓"' : '"＋"'};
         display: inline-block;
         padding-right: 10px;
-        color: ${isChecked ? 'rgba(65, 164, 253, 1)' : '#000'};
+        color: ${isChecked ? '#41a4fd' : '#000'};
+      }
+      @media screen and (max-width: 520px) {
+        font-size: 13px;
+        width: 95px;
+        height: 34px;
+        border-radius: 17px;
       }
     `,
   ]

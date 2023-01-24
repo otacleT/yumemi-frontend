@@ -49,13 +49,17 @@ const container = css`
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
+  @media screen and (max-width: 520px) {
+    padding: 40px 10px;
+  }
 `
 const wrapper = css`
   display: grid;
   gap: 20px;
   grid-template-columns: minmax(340px, 2fr) 3fr;
   align-items: center;
-  @media (max-width: 768px) {
+  @media screen and (max-width: 960px) {
+    gap: 30px;
     grid-template-columns: 1fr;
   }
 `

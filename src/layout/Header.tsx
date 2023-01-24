@@ -34,6 +34,9 @@ const container = css`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  @media screen and (max-width: 520px) {
+    padding: 0 10px;
+  }
 `
 const title = css`
   font-size: 36px;
@@ -46,5 +49,11 @@ const title = css`
     font-size: 22px;
     font-weight: 700;
     padding-top: 5px;
+  }
+  @media screen and (max-width: 520px) {
+    font-size: 28px;
+    span {
+      font-size: 18px;
+    }
   }
 `

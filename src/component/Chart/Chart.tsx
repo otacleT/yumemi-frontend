@@ -65,15 +65,13 @@ export const Chart: FC<Props> = (props) => {
   }, [chartData])
   return (
     <div css={chart}>
-      <div css={chart}>
-        {chartData.length === 0 ? (
-          <div css={noData}>
-            <p>都道府県を選択してください</p>
-          </div>
-        ) : (
-          <HighchartsReact highcharts={Highcharts} options={options} />
-        )}
-      </div>
+      {chartData.length === 0 ? (
+        <div css={noData}>
+          <p>都道府県を選択してください</p>
+        </div>
+      ) : (
+        <HighchartsReact highcharts={Highcharts} options={options} />
+      )}
     </div>
   )
 }
@@ -93,9 +91,16 @@ const noData = css`
     font-weight: 700;
     color: #fff;
     text-align: center;
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  @media screen and (max-width: 520px) {
+    padding-top: 70%;
+    p {
+      font-size: 18px;
+    }
   }
 `
