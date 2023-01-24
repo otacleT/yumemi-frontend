@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
 import type {Dispatch, FC, SetStateAction} from 'react'
-import {useCallback} from 'react'
-import {useState} from 'react'
 
+import {usePrefItem} from '@/hook/PrefItem'
 import type {ChartData} from '@/type/ChartData'
 
 type Prefecture = {
@@ -12,47 +11,23 @@ type Prefecture = {
   setChartData: Dispatch<SetStateAction<ChartData[]>>
 }
 
-type Data = {
-  year: number
-  value: number
-}
-
 /**
  * @package
  */
 export const PrefectureItem: FC<Prefecture> = (props) => {
   const {prefCode, prefName, setChartData} = props
-  const [isChecked, setIsChecked] = useState(false)
-  const handleChange = useCallback(async () => {
-    if (isChecked) {
-      setChartData((prev) => {
-        return prev.filter((item) => {
-          return item.name !== prefName
-        })
-      })
-    } else {
-      const requestHeaders: HeadersInit = new Headers()
-      requestHeaders.append('text', prefCode.toString())
-      const res = await fetch('/api/population', {
-        method: 'GET',
-        headers: requestHeaders,
-      })
-      const data = await res.json()
-      const population = data.result.data[0].data.map((item: Data) => {
-        return item.value
-      })
-      setChartData((prev) => {
-        return [...prev, {name: prefName, data: population}]
-      })
-    }
-    setIsChecked((prev) => {
-      return !prev
-    })
-  }, [isChecked, prefCode, prefName, setChartData])
+  const {handleChange, isChecked} = usePrefItem()
   return (
     <li>
       <label css={label(isChecked)}>
-        <input css={check} type='checkbox' checked={isChecked} onChange={handleChange} />
+        <input
+          css={check}
+          type='checkbox'
+          checked={isChecked}
+          onChange={() => {
+            return handleChange(prefCode, prefName, setChartData)
+          }}
+        />
         {prefName}
       </label>
     </li>
