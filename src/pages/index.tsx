@@ -62,7 +62,12 @@ const Home: NextPage<Prefectures> = (props) => {
           pointStart: 1980,
         },
       },
-      series: [...chartData],
+      series: chartData.map((data: ChartData) => {
+        return {
+          name: data.name,
+          data: [...data.data],
+        }
+      }),
     }
   }, [chartData])
   return (
