@@ -89,7 +89,7 @@ const noData = css`
   border-radius: 10px;
   position: relative;
   p {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     color: #fff;
     text-align: center;
