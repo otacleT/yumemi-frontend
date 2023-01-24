@@ -91,6 +91,7 @@ const noData = css`
     font-weight: 700;
     color: #fff;
     text-align: center;
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
