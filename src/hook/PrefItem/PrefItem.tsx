@@ -20,12 +20,14 @@ export const usePrefItem = () => {
       setChartData: Dispatch<SetStateAction<ChartData[]>>
     ) => {
       if (isChecked) {
+        setIsChecked(false)
         setChartData((prev) => {
           return prev.filter((item) => {
             return item.name !== prefName
           })
         })
       } else {
+        setIsChecked(true)
         const requestHeaders: HeadersInit = new Headers()
         requestHeaders.append('text', prefCode.toString())
         const res = await fetch('/api/population', {
@@ -40,9 +42,6 @@ export const usePrefItem = () => {
           return [...prev, {name: prefName, data: population}]
         })
       }
-      setIsChecked((prev) => {
-        return !prev
-      })
     },
     [isChecked]
   )
