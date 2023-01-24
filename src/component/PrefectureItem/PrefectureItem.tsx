@@ -58,6 +58,11 @@ const label = (isChecked: boolean) => {
         padding-right: 10px;
         color: ${isChecked ? 'rgba(65, 164, 253, 1)' : '#000'};
       }
+      @media screen and (max-width: 520px) {
+        font-size: 13px;
+        width: 95px;
+        height: 34px;
+      }
     `,
   ]
 }
