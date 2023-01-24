@@ -24,6 +24,10 @@ export const Chart: FC<Props> = (props) => {
       title: {
         text: undefined,
       },
+      subtitle: {
+        text: '出典：RESAS（地域経済分析システム）',
+        align: 'right',
+      },
       xAxis: {
         title: {
           text: '年度',
@@ -55,17 +59,10 @@ export const Chart: FC<Props> = (props) => {
   return (
     <div css={chart}>
       <HighchartsReact highcharts={Highcharts} options={options} />
-      <p css={sourceTxt}>出典：RESAS（地域経済分析システム）</p>
     </div>
   )
 }
 
 const chart = css`
   width: 100%;
-`
-const sourceTxt = css`
-  font-size: 13px;
-  font-weight: 400;
-  text-align: right;
-  margin-top: 20px;
 `
