@@ -65,6 +65,7 @@ const chart = css`
 `
 const sourceTxt = css`
   font-size: 13px;
+  font-weight: 400;
   text-align: right;
   margin-top: 20px;
 `
