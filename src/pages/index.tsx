@@ -55,7 +55,8 @@ const wrapper = css`
   gap: 20px;
   grid-template-columns: minmax(340px, 2fr) 3fr;
   align-items: center;
-  @media (max-width: 768px) {
+  @media screen and (max-width: 960px) {
+    gap: 30px;
     grid-template-columns: 1fr;
   }
 `
