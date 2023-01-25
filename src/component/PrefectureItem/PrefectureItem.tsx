@@ -9,13 +9,14 @@ type Prefecture = {
   prefCode: number
   prefName: string
   setChartData: Dispatch<SetStateAction<ChartData[]>>
+  setStartYear: Dispatch<SetStateAction<number>>
 }
 
 /**
  * @package
  */
 export const PrefectureItem: FC<Prefecture> = (props) => {
-  const {prefCode, prefName, setChartData} = props
+  const {prefCode, prefName, setChartData, setStartYear} = props
   const {handleChange, isChecked} = usePrefItem()
   return (
     <li>
@@ -25,7 +26,7 @@ export const PrefectureItem: FC<Prefecture> = (props) => {
           type='checkbox'
           checked={isChecked}
           onChange={() => {
-            return handleChange(prefCode, prefName, setChartData)
+            return handleChange(prefCode, prefName, setChartData, setStartYear)
           }}
         />
         {prefName}
