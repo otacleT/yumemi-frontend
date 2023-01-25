@@ -7,6 +7,8 @@ import {useMemo} from 'react'
 
 import type {ChartData} from '@/type/ChartData'
 
+import {NoData} from '../NoData'
+
 type Props = {
   chartData: ChartData[]
   startYear: number
@@ -67,9 +69,7 @@ export const Chart: FC<Props> = (props) => {
   return (
     <div css={chart}>
       {chartData.length === 0 ? (
-        <div css={noData}>
-          <p>都道府県を選択してください</p>
-        </div>
+        <NoData />
       ) : (
         <HighchartsReact highcharts={Highcharts} options={options} />
       )}
@@ -79,29 +79,4 @@ export const Chart: FC<Props> = (props) => {
 
 const chart = css`
   width: 100%;
-`
-const noData = css`
-  width: 100%;
-  height: 0;
-  padding-top: 65%;
-  background-image: linear-gradient(90deg, #41a4fd, #677efa);
-  border-radius: 10px;
-  position: relative;
-  p {
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  @media screen and (max-width: 520px) {
-    padding-top: 70%;
-    p {
-      font-size: 18px;
-    }
-  }
 `
