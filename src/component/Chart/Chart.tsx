@@ -7,20 +7,26 @@ import {useMemo} from 'react'
 
 import type {ChartData} from '@/type/ChartData'
 
+import {NoData} from '../NoData'
+
 type Props = {
   chartData: ChartData[]
+  startYear: number
 }
 
 /**
  * @package
  */
 export const Chart: FC<Props> = (props) => {
-  const {chartData} = props
+  const {chartData, startYear} = props
   const options = useMemo(() => {
     return {
       chart: {
         type: 'line',
         height: '65%',
+        style: {
+          fontFamily: 'Noto Sans JP',
+        },
       },
       title: {
         text: undefined,
@@ -46,13 +52,15 @@ export const Chart: FC<Props> = (props) => {
         },
       },
       plotOptions: {
-        column: {
-          pointStart: 100000,
-          pointInterval: 100000,
-        },
-        line: {
+        series: {
+          marker: {
+            fillColor: '#FFFFFF',
+            lineWidth: 2,
+            lineColor: undefined, // inherit from series
+            radius: 5,
+          },
           pointInterval: 5,
-          pointStart: 1980,
+          pointStart: startYear,
         },
       },
       series: chartData.map((data: ChartData) => {
@@ -62,13 +70,11 @@ export const Chart: FC<Props> = (props) => {
         }
       }),
     }
-  }, [chartData])
+  }, [chartData, startYear])
   return (
     <div css={chart}>
       {chartData.length === 0 ? (
-        <div css={noData}>
-          <p>都道府県を選択してください</p>
-        </div>
+        <NoData />
       ) : (
         <HighchartsReact highcharts={Highcharts} options={options} />
       )}
@@ -78,29 +84,4 @@ export const Chart: FC<Props> = (props) => {
 
 const chart = css`
   width: 100%;
-`
-const noData = css`
-  width: 100%;
-  height: 0;
-  padding-top: 65%;
-  background-image: linear-gradient(90deg, #41a4fd, #677efa);
-  border-radius: 10px;
-  position: relative;
-  p {
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  @media screen and (max-width: 520px) {
-    padding-top: 70%;
-    p {
-      font-size: 18px;
-    }
-  }
 `

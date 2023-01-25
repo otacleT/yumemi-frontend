@@ -10,10 +10,14 @@ import {PrefectureItem} from '../PrefectureItem'
 type Props = {
   prefectures: Prefecture[]
   setChartData: Dispatch<SetStateAction<ChartData[]>>
+  setStartYear: Dispatch<SetStateAction<number>>
 }
 
+/**
+ * @package
+ */
 export const PrefectureList: FC<Props> = (props) => {
-  const {prefectures, setChartData} = props
+  const {prefectures, setChartData, setStartYear} = props
   return (
     <div>
       <h2 css={title}>都道府県一覧</h2>
@@ -26,6 +30,7 @@ export const PrefectureList: FC<Props> = (props) => {
                 prefName={prefName}
                 prefCode={prefCode}
                 setChartData={setChartData}
+                setStartYear={setStartYear}
               />
             )
           })}
