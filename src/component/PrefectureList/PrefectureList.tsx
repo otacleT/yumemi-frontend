@@ -13,6 +13,9 @@ type Props = {
   setStartYear: Dispatch<SetStateAction<number>>
 }
 
+/**
+ * @package
+ */
 export const PrefectureList: FC<Props> = (props) => {
   const {prefectures, setChartData, setStartYear} = props
   return (

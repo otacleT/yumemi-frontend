@@ -5,7 +5,7 @@ import type {Dispatch, FC, SetStateAction} from 'react'
 import {usePrefItem} from '@/hook/PrefItem'
 import type {ChartData} from '@/type/ChartData'
 
-type Prefecture = {
+type Props = {
   prefCode: number
   prefName: string
   setChartData: Dispatch<SetStateAction<ChartData[]>>
@@ -15,7 +15,7 @@ type Prefecture = {
 /**
  * @package
  */
-export const PrefectureItem: FC<Prefecture> = (props) => {
+export const PrefectureItem: FC<Props> = (props) => {
   const {prefCode, prefName, setChartData, setStartYear} = props
   const {handleChange, isChecked} = usePrefItem()
   return (
