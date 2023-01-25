@@ -32,12 +32,17 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPage<Prefectures> = (props) => {
   const {prefectures} = props
+  const [startYear, setStartYear] = useState<number>(0)
   const [chartData, setChartData] = useState<ChartData[]>([])
 
   return (
     <section css={[container, wrapper]}>
-      <PrefectureList prefectures={prefectures} setChartData={setChartData} />
-      <Chart chartData={chartData} />
+      <PrefectureList
+        prefectures={prefectures}
+        setChartData={setChartData}
+        setStartYear={setStartYear}
+      />
+      <Chart chartData={chartData} startYear={startYear} />
     </section>
   )
 }

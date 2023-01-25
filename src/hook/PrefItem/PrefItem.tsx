@@ -17,7 +17,8 @@ export const usePrefItem = () => {
     async (
       prefCode: number,
       prefName: string,
-      setChartData: Dispatch<SetStateAction<ChartData[]>>
+      setChartData: Dispatch<SetStateAction<ChartData[]>>,
+      setStartYear: Dispatch<SetStateAction<number>>
     ) => {
       if (isChecked) {
         setIsChecked(false)
@@ -41,6 +42,7 @@ export const usePrefItem = () => {
         setChartData((prev) => {
           return [...prev, {name: prefName, data: population}]
         })
+        setStartYear(data.result.data[0].data[0].year)
       }
     },
     [isChecked]

@@ -9,13 +9,14 @@ import type {ChartData} from '@/type/ChartData'
 
 type Props = {
   chartData: ChartData[]
+  startYear: number
 }
 
 /**
  * @package
  */
 export const Chart: FC<Props> = (props) => {
-  const {chartData} = props
+  const {chartData, startYear} = props
   const options = useMemo(() => {
     return {
       chart: {
@@ -52,7 +53,7 @@ export const Chart: FC<Props> = (props) => {
         },
         line: {
           pointInterval: 5,
-          pointStart: 1980,
+          pointStart: startYear,
         },
       },
       series: chartData.map((data: ChartData) => {
@@ -62,7 +63,7 @@ export const Chart: FC<Props> = (props) => {
         }
       }),
     }
-  }, [chartData])
+  }, [chartData, startYear])
   return (
     <div css={chart}>
       {chartData.length === 0 ? (
