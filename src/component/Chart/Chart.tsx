@@ -24,6 +24,9 @@ export const Chart: FC<Props> = (props) => {
       chart: {
         type: 'line',
         height: '65%',
+        style: {
+          fontFamily: 'Noto Sans JP',
+        },
       },
       title: {
         text: undefined,
@@ -49,11 +52,13 @@ export const Chart: FC<Props> = (props) => {
         },
       },
       plotOptions: {
-        column: {
-          pointStart: 100000,
-          pointInterval: 100000,
-        },
-        line: {
+        series: {
+          marker: {
+            fillColor: '#FFFFFF',
+            lineWidth: 2,
+            lineColor: undefined, // inherit from series
+            radius: 5,
+          },
           pointInterval: 5,
           pointStart: startYear,
         },
