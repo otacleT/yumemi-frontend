@@ -13,6 +13,7 @@ type Data = {
  */
 export const usePrefItem = () => {
   const [isChecked, setIsChecked] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const handleChange = useCallback(
     async (
       prefCode: number,
@@ -21,21 +22,25 @@ export const usePrefItem = () => {
       setStartYear: Dispatch<SetStateAction<number>>
     ) => {
       if (isChecked) {
-        setIsChecked(false)
         setChartData((prev) => {
           return prev.filter((item) => {
             return item.name !== prefName
           })
         })
       } else {
-        setIsChecked(true)
+        setIsLoading(true)
         const requestHeaders: HeadersInit = new Headers()
         requestHeaders.append('text', prefCode.toString())
-        const res = await fetch('/api/population', {
+        const data = await fetch('/api/population', {
           method: 'GET',
           headers: requestHeaders,
         })
-        const data = await res.json()
+          .then((res) => {
+            return res.json()
+          })
+          .catch((err) => {
+            alert(err.message)
+          })
         const population = data.result.data[0].data.map((item: Data) => {
           return item.value
         })
@@ -44,9 +49,13 @@ export const usePrefItem = () => {
         })
         setStartYear(data.result.data[0].data[0].year)
       }
+      setIsChecked((prev) => {
+        return !prev
+      })
+      setIsLoading(false)
     },
     [isChecked]
   )
 
-  return {isChecked, handleChange}
+  return {isChecked, isLoading, handleChange}
 }
