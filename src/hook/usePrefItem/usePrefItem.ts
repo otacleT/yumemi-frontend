@@ -31,11 +31,16 @@ export const usePrefItem = () => {
         setIsLoading(true)
         const requestHeaders: HeadersInit = new Headers()
         requestHeaders.append('text', prefCode.toString())
-        const res = await fetch('/api/population', {
+        const data = await fetch('/api/population', {
           method: 'GET',
           headers: requestHeaders,
         })
-        const data = await res.json()
+          .then((res) => {
+            return res.json()
+          })
+          .catch((err) => {
+            alert(err.message)
+          })
         const population = data.result.data[0].data.map((item: Data) => {
           return item.value
         })
