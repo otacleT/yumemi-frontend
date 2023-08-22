@@ -13,8 +13,4 @@ const meta: Meta<typeof <%=name%>> = {
 export default meta
 type Story = StoryObj<typeof <%=name%>>
 
-export const Primary: Story = {
-  args: {
-    sample: 'sample',
-  },
-}
+export const Primary: Story = {}
