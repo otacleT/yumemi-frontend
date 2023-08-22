@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import {useSelectedPrefDispatch} from '@/component/Home/context/SelectedPrefContext'
+import {useSelectedPrefDispatch} from '@/component/Home/context/SelectedPrefDataContext'
 
 type PrefectureProps = {
   prefCode: number
@@ -34,16 +34,16 @@ export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
         items-center
         justify-center
         rounded-full
-        border
-        border-black
+        border-2
+        border-gray-200
         before:mr-1
         before:flex
         before:h-5
-        before:w-5
+        before:w-5    
         before:items-center
         before:justify-center
         before:text-xl
-        ${isChecked ? 'before:content-["✓"]' : 'before:content-["+"]'}
+        ${isChecked ? 'before:content-["✓"]' : 'before:content-["＋"]'}
         `}
       >
         {prefName}
