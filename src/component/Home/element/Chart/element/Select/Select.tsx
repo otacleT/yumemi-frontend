@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
 
-import type {DataType} from '@/component/Home/element/Chart/Chart'
 import {staticPath} from '@/lib/$path'
+import type {DisplayDataType} from '@/type/DisplayDataType'
 
 type SelectProps = {
-  dataType: DataType
-  setDataType: React.Dispatch<React.SetStateAction<DataType>>
+  dataType: DisplayDataType
+  setDataType: React.Dispatch<React.SetStateAction<DisplayDataType>>
 }
 
 /**
@@ -19,7 +19,7 @@ export const Select: React.FC<SelectProps> = ({dataType, setDataType}) => {
       <select
         className='relative pl-4 pr-10 py-2 rounded-lg border-2 border-gray-300 appearance-none cursor-pointer hover:border-gray-500 focus-visible:outline-gray-500'
         defaultValue={dataType}
-        onChange={(e) => setDataType(e.target.value as DataType)}
+        onChange={(e) => setDataType(e.target.value as DisplayDataType)}
       >
         <option value='totalPopulation'>総人口</option>
         <option value='youthPopulation'>若年人口</option>

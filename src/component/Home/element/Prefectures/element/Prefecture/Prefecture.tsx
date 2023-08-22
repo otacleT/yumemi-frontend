@@ -1,11 +1,9 @@
 import React from 'react'
 
 import {usePrefecture} from '@/component/Home/element/Prefectures/element/Prefecture/hook/usePrefecture'
+import type {PrefectureType} from '@/type/PrefectureType'
 
-type PrefectureProps = {
-  prefCode: number
-  prefName: string
-}
+type PrefectureProps = PrefectureType
 
 /**
  * @package

@@ -6,19 +6,14 @@ import {useSelectedPref} from '@/component/Home/context/SelectedPrefDataContext'
 import {useStartYear} from '@/component/Home/context/StartYearContext'
 import {NoData} from '@/component/Home/element/Chart/element/NoData'
 import {Select} from '@/component/Home/element/Chart/element/Select'
-
-export type DataType =
-  | 'totalPopulation'
-  | 'youthPopulation'
-  | 'workingAgePopulation'
-  | 'elderlyPopulation'
+import type {DisplayDataType} from '@/type/DisplayDataType'
 
 /**
  * @package
  */
 
 export const Chart: React.FC = () => {
-  const [dataType, setDataType] = useState<DataType>('totalPopulation')
+  const [dataType, setDataType] = useState<DisplayDataType>('totalPopulation')
   const selectedPrefData = useSelectedPref()
   const {startYear} = useStartYear()
   const options = useMemo(() => {
@@ -75,7 +70,7 @@ export const Chart: React.FC = () => {
   }, [selectedPrefData, dataType, startYear])
 
   return (
-    <div className='w-full'>
+    <div>
       {selectedPrefData.length === 0 ? (
         <NoData />
       ) : (

@@ -15,7 +15,7 @@ type HomeProps = {
  */
 export const Home: React.FC<HomeProps> = ({prefectures}) => {
   return (
-    <section className='mx-auto w-full max-w-7xl px-5 mt-20'>
+    <section className='mx-auto w-full max-w-7xl px-5 my-20'>
       <h2 className='text-xl font-bold'>都道府県一覧</h2>
       <SelectedPrefDataProvider>
         <StartYearProvider>

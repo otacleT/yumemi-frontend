@@ -46,9 +46,8 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const HomePage: NextPage<HomePageProps> = ({error, prefectures}) => {
-  console.info(error)
   if (error) {
-    return <div>都道府県一覧の取得に失敗しました。</div>
+    return <div className='py-10 text-center'>都道府県一覧の取得に失敗しました。</div>
   }
   return <Home prefectures={prefectures} />
 }
