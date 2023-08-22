@@ -80,7 +80,6 @@ module.exports = {
         'next.config.mjs',
         'jest.config.js',
         'tailwind.config.ts',
-        'src/lib/axios.ts',
       ],
       rules: {
         'import/no-default-export': 'off',
