@@ -1,12 +1,8 @@
 import type {GetStaticProps, NextPage} from 'next'
 
 import {Home} from '@/component/Home'
+import type {PrefecturesRes} from '@/lib/dto'
 import type {PrefectureType} from '@/type/PrefectureType'
-
-type PrefecturesRes = {
-  message: string
-  result: PrefectureType[]
-}
 
 type HomePageProps = {
   prefectures: PrefectureType[]
