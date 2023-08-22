@@ -1,0 +1,62 @@
+import {useCallback, useState} from 'react'
+
+import {useSelectedPrefDispatch} from '@/component/Home/context/SelectedPrefDataContext'
+import type {PopulationRes} from '@/lib/dto'
+import type {PrefectureType} from '@/type/PrefectureType'
+
+export const usePrefecture = () => {
+  const [isChecked, setIsChecked] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const dispatch = useSelectedPrefDispatch()
+
+  const mapPopulationData = useCallback(
+    (prefData: PopulationRes) => ({
+      totalPopulation: prefData.result.data[0].data.map((t) => t.value),
+      youthPopulation: prefData.result.data[1].data.map((t) => t.value),
+      workingAgePopulation: prefData.result.data[2].data.map((t) => t.value),
+      elderlyPopulation: prefData.result.data[3].data.map((t) => t.value),
+    }),
+    []
+  )
+
+  const handleSelect = useCallback(
+    async ({prefCode, prefName}: PrefectureType) => {
+      if (!dispatch) {
+        return
+      }
+      if (isChecked) {
+        dispatch({
+          type: 'deleted',
+          prefCode,
+        })
+        setIsChecked(false)
+      } else {
+        try {
+          setIsLoading(true)
+          const res = await fetch(`/api/population?prefCode=${prefCode}`)
+          if (!res.ok) {
+            throw new Error(`Failed to fetch with status ${res.status}`)
+          }
+          const prefData = (await res.json()) as PopulationRes
+          const mappedData = mapPopulationData(prefData)
+          dispatch({
+            type: 'added',
+            data: {prefName, prefCode, data: mappedData},
+          })
+        } catch (error) {
+          window.alert('データの取得に失敗しました😥')
+        } finally {
+          setIsChecked(true)
+          setIsLoading(false)
+        }
+      }
+    },
+    [dispatch, isChecked, mapPopulationData]
+  )
+
+  return {
+    handleSelect,
+    isChecked,
+    isLoading,
+  }
+}

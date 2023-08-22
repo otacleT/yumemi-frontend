@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-import {useSelectedPrefDispatch} from '@/component/Home/context/SelectedPrefDataContext'
+import {usePrefecture} from '@/component/Home/element/Prefectures/element/Prefecture/hook/usePrefecture'
 
 type PrefectureProps = {
   prefCode: number
@@ -11,22 +11,14 @@ type PrefectureProps = {
  * @package
  */
 export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
-  const [isChecked, setIsChecked] = useState<boolean>(false)
-  const dispatch = useSelectedPrefDispatch()
+  const {handleSelect, isChecked, isLoading} = usePrefecture()
   return (
     <li>
       <button
         onClick={() => {
-          if (!dispatch) {
-            return
-          }
-          dispatch({
-            type: isChecked ? 'deleted' : 'added',
-            prefCode,
-            prefName,
-          })
-          setIsChecked((prev) => !prev)
+          handleSelect({prefCode, prefName})
         }}
+        disabled={isLoading}
         className={`
         flex
         h-9
@@ -43,7 +35,15 @@ export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
         before:items-center
         before:justify-center
         before:text-xl
-        ${isChecked ? 'before:content-["✓"]' : 'before:content-["＋"]'}
+        ${
+          isLoading
+            ? 'pointer-events-none before:rounded-full before:animate-spin before:border-2 before:border-gray-200 before:border-t-[#41a4fd] before:content-[""]'
+            : `${
+                isChecked
+                  ? 'before:content-["✓"] text-[#41a4fd] border-[#41a4fd]'
+                  : 'before:content-["＋"]'
+              }`
+        }
         `}
       >
         {prefName}
