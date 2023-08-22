@@ -8,6 +8,12 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
+  highcharts:
+    specifier: ^11.1.0
+    version: 11.1.0
+  highcharts-react-official:
+    specifier: ^3.2.0
+    version: 3.2.0(highcharts@11.1.0)(react@18.2.0)
   next:
     specifier: 13.4.19
     version: 13.4.19(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
@@ -8347,6 +8353,20 @@ packages:
   /headers-polyfill@3.1.2:
     resolution: {integrity: sha512-tWCK4biJ6hcLqTviLXVR9DTRfYGQMXEIUj3gwJ2rZ5wO/at3XtkI4g8mCvFdUF9l1KMBNCfmNAdnahm1cgavQA==}
     dev: true
+
+  /highcharts-react-official@3.2.0(highcharts@11.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-71IJZsLmEboYFjONpwC3NRsg6JKvtKYtS5Si3e6s6MLRSOFNOY8KILTkzvO36kjpeR/A0X3/kvvewE+GMPpkjw==}
+    peerDependencies:
+      highcharts: '>=6.0.0'
+      react: '>=16.8.0'
+    dependencies:
+      highcharts: 11.1.0
+      react: 18.2.0
+    dev: false
+
+  /highcharts@11.1.0:
+    resolution: {integrity: sha512-vhmqq6/frteWMx0GKYWwEFL25g4OYc7+m+9KQJb/notXbNtIb8KVy+ijOF7XAFqF165cq0pdLIePAmyFY5ph3g==}
+    dev: false
 
   /hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
