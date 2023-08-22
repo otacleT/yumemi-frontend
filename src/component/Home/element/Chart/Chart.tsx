@@ -3,6 +3,7 @@ import HighchartsReact from 'highcharts-react-official'
 import React, {useMemo, useState} from 'react'
 
 import {useSelectedPref} from '@/component/Home/context/SelectedPrefDataContext'
+import {useStartYear} from '@/component/Home/context/StartYearContext'
 import {NoData} from '@/component/Home/element/Chart/element/NoData'
 import {Select} from '@/component/Home/element/Chart/element/Select'
 
@@ -19,6 +20,7 @@ export type DataType =
 export const Chart: React.FC = () => {
   const [dataType, setDataType] = useState<DataType>('totalPopulation')
   const selectedPrefData = useSelectedPref()
+  const {startYear} = useStartYear()
   const options = useMemo(() => {
     return {
       chart: {
@@ -60,7 +62,7 @@ export const Chart: React.FC = () => {
             radius: 5,
           },
           pointInterval: 5,
-          pointStart: 1960,
+          pointStart: startYear,
         },
       },
       series: selectedPrefData.map((data) => {
@@ -70,7 +72,7 @@ export const Chart: React.FC = () => {
         }
       }),
     }
-  }, [selectedPrefData, dataType])
+  }, [selectedPrefData, dataType, startYear])
 
   return (
     <div className='w-full'>

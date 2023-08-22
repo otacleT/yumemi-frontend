@@ -1,12 +1,14 @@
 import {useCallback, useState} from 'react'
 
 import {useSelectedPrefDispatch} from '@/component/Home/context/SelectedPrefDataContext'
+import {useStartYear} from '@/component/Home/context/StartYearContext'
 import type {PopulationRes} from '@/lib/dto'
 import type {PrefectureType} from '@/type/PrefectureType'
 
 export const usePrefecture = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const {setStartYear} = useStartYear()
   const dispatch = useSelectedPrefDispatch()
 
   const mapPopulationData = useCallback(
@@ -38,6 +40,7 @@ export const usePrefecture = () => {
             throw new Error(`Failed to fetch with status ${res.status}`)
           }
           const prefData = (await res.json()) as PopulationRes
+          setStartYear(prefData.result.data[0].data[0].year)
           const mappedData = mapPopulationData(prefData)
           dispatch({
             type: 'added',
@@ -51,7 +54,7 @@ export const usePrefecture = () => {
         }
       }
     },
-    [dispatch, isChecked, mapPopulationData]
+    [dispatch, isChecked, mapPopulationData, setStartYear]
   )
 
   return {
