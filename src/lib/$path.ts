@@ -6,8 +6,9 @@ export type PagesPath = typeof pagesPath;
 
 export const staticPath = {
   favicon_ico: '/favicon.ico',
-  next_svg: '/next.svg',
-  vercel_svg: '/vercel.svg'
+  icon: {
+    icon_arrowB_svg: '/icon/icon-arrowB.svg'
+  }
 } as const;
 
 export type StaticPath = typeof staticPath;
