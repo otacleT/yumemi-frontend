@@ -20,30 +20,30 @@ export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
         }}
         disabled={isLoading}
         className={`
-        text-sm
-        md:text-base
         flex
         h-8
-        md:h-9
         w-full
         items-center
         justify-center
         rounded-full
         border-2
+        text-sm
         before:mr-1
         before:flex
         before:h-5
-        before:w-5    
+        before:w-5
         before:items-center
-        before:justify-center
+        before:justify-center    
         before:text-xl
+        md:h-9
+        md:text-base
         ${
           isLoading
-            ? 'pointer-events-none before:rounded-full before:animate-spin before:border-2 before:border-gray-200 before:border-t-[#41a4fd] before:content-[""]'
+            ? 'pointer-events-none before:animate-spin before:rounded-full before:border-2 before:border-gray-200 before:border-t-[#41a4fd] before:content-[""]'
             : `${
                 isChecked
                   ? `before:content-["✓"] ${prefColor}`
-                  : 'before:content-["＋"] border-gray-200'
+                  : 'border-gray-200 before:content-["＋"]'
               }`
         }
         `}
