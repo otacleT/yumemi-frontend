@@ -1,9 +1,9 @@
 import type {Dispatch, ReactNode} from 'react'
 import {createContext, useContext, useReducer} from 'react'
 
-type SelectedPrefDataType = {
-  prefName: string
-  prefCode: number
+import type {PrefectureType} from '@/type/PrefectureType'
+
+type SelectedPrefDataType = PrefectureType & {
   data: {
     totalPopulation: number[]
     youthPopulation: number[]
