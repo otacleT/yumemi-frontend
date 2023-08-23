@@ -6,6 +6,7 @@ import {useSelectedPref} from '@/component/Home/context/SelectedPrefDataContext'
 import {useStartYear} from '@/component/Home/context/StartYearContext'
 import {NoData} from '@/component/Home/element/Chart/element/NoData'
 import {Select} from '@/component/Home/element/Chart/element/Select'
+import {prefColors} from '@/lib/prefColors'
 import type {DisplayDataType} from '@/type/DisplayDataType'
 
 /**
@@ -64,6 +65,7 @@ export const Chart: React.FC = () => {
         return {
           name: data.prefName,
           data: [...data.data[dataType]],
+          color: prefColors[data.prefName],
         }
       }),
     }
