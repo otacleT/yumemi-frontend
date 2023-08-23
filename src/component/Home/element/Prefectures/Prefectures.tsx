@@ -13,7 +13,7 @@ type PrefecturesProps = {
 
 export const Prefectures: React.FC<PrefecturesProps> = ({prefectures}) => {
   return (
-    <ul className='grid w-full grid-cols-auto-fit gap-2'>
+    <ul className='grid h-60 w-full grid-cols-auto-fit gap-2 overflow-y-auto md:h-auto lg:w-[calc(35%-10px)]'>
       {prefectures?.map((prefecture: PrefectureType) => {
         return (
           <Prefecture

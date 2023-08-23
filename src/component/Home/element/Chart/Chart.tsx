@@ -1,11 +1,12 @@
-import Highcharts from 'highcharts'
+import * as Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import React, {useMemo, useState} from 'react'
+import React, {useMemo, useRef, useState} from 'react'
 
 import {useSelectedPref} from '@/component/Home/context/SelectedPrefDataContext'
 import {useStartYear} from '@/component/Home/context/StartYearContext'
 import {NoData} from '@/component/Home/element/Chart/element/NoData'
 import {Select} from '@/component/Home/element/Chart/element/Select'
+import {prefColors} from '@/lib/prefColors'
 import type {DisplayDataType} from '@/type/DisplayDataType'
 
 /**
@@ -14,6 +15,7 @@ import type {DisplayDataType} from '@/type/DisplayDataType'
 
 export const Chart: React.FC = () => {
   const [dataType, setDataType] = useState<DisplayDataType>('totalPopulation')
+  const chartRef = useRef(null)
   const selectedPrefData = useSelectedPref()
   const {startYear} = useStartYear()
   const options = useMemo(() => {
@@ -64,19 +66,20 @@ export const Chart: React.FC = () => {
         return {
           name: data.prefName,
           data: [...data.data[dataType]],
+          color: prefColors[data.prefName],
         }
       }),
     }
   }, [selectedPrefData, dataType, startYear])
 
   return (
-    <div>
+    <div className='w-full lg:w-[calc(65%-10px)]'>
       {selectedPrefData.length === 0 ? (
         <NoData />
       ) : (
         <>
           <Select dataType={dataType} setDataType={setDataType} />
-          <HighchartsReact highcharts={Highcharts} options={options} />
+          <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef} />
         </>
       )}
     </div>
