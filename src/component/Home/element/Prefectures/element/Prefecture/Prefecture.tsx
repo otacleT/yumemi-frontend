@@ -27,7 +27,6 @@ export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
         justify-center
         rounded-full
         border-2
-        border-gray-200
         before:mr-1
         before:flex
         before:h-5
@@ -38,7 +37,11 @@ export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
         ${
           isLoading
             ? 'pointer-events-none before:rounded-full before:animate-spin before:border-2 before:border-gray-200 before:border-t-[#41a4fd] before:content-[""]'
-            : `${isChecked ? `before:content-["✓"] ${prefColor}` : 'before:content-["＋"]'}`
+            : `${
+                isChecked
+                  ? `before:content-["✓"] ${prefColor}`
+                  : 'before:content-["＋"] border-gray-200'
+              }`
         }
         `}
       >
