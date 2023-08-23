@@ -6,7 +6,6 @@ const config: Config = {
     extend: {
       gridTemplateColumns: {
         'auto-fit': 'repeat(auto-fit, minmax(7rem, 1fr))',
-        custom: 'minmax(20rem, 2fr) 3fr',
       },
       fontFamily: {
         sans: ['var(--font-noto-sans-jp)'],
