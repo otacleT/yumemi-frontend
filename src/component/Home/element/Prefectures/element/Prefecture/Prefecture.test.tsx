@@ -1,10 +1,11 @@
 import {render, screen} from '@testing-library/react'
 
 import {Prefecture} from '@/component/Home/element/Prefectures/element/Prefecture'
+import type {PrefectureType} from '@/type/PrefectureType'
 
 describe('Prefecture', () => {
   // Arrange
-  const prefecture = {
+  const prefecture: PrefectureType = {
     prefCode: 1,
     prefName: '北海道',
   }
