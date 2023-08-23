@@ -20,8 +20,11 @@ export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
         }}
         disabled={isLoading}
         className={`
+        text-sm
+        md:text-base
         flex
-        h-9
+        h-8
+        md:h-9
         w-full
         items-center
         justify-center

@@ -17,7 +17,7 @@ export const Select: React.FC<SelectProps> = ({dataType, setDataType}) => {
   return (
     <div className='text-right relative'>
       <select
-        className='relative pl-4 pr-10 py-2 rounded-lg border-2 border-gray-300 appearance-none cursor-pointer hover:border-gray-500 focus-visible:outline-gray-500'
+        className='text-sm md:text-base pr-9 pl-3 relative md:pl-4 md:pr-10 py-2 rounded-lg border-2 border-gray-300 appearance-none cursor-pointer hover:border-gray-500 focus-visible:outline-gray-500'
         defaultValue={dataType}
         onChange={(e) => setDataType(e.target.value as DisplayDataType)}
       >
