@@ -88,6 +88,7 @@ module.exports = {
         'next.config.mjs',
         'jest.config.js',
         'tailwind.config.ts',
+        'playwright.config.ts',
       ],
       rules: {
         'import/no-default-export': 'off',
