@@ -70,6 +70,13 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+    // testing-library
+    'testing-library/no-await-sync-events': [
+      'error',
+      {
+        eventModules: ['fire-event'],
+      },
+    ],
   },
   overrides: [
     {
