@@ -39,17 +39,17 @@ export const usePrefecture = () => {
           if (!res.ok) {
             throw new Error(`Failed to fetch with status ${res.status}`)
           }
-          const prefData = (await res.json()) as PopulationRes
+          const prefData: PopulationRes = await res.json()
           setStartYear(prefData.result.data[0].data[0].year)
           const mappedData = mapPopulationData(prefData)
           dispatch({
             type: 'added',
             data: {prefName, prefCode, data: mappedData},
           })
+          setIsChecked(true)
         } catch (error) {
           window.alert('データの取得に失敗しました😥')
         } finally {
-          setIsChecked(true)
           setIsLoading(false)
         }
       }
