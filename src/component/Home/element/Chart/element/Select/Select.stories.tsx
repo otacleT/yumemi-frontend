@@ -5,6 +5,7 @@ import {Select} from '.'
 const meta: Meta<typeof Select> = {
   title: 'Select',
   component: Select,
+  tags: ['autodocs'],
 }
 
 export default meta

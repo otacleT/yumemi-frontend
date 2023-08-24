@@ -5,6 +5,7 @@ import {NoData} from '.'
 const meta: Meta<typeof NoData> = {
   title: 'NoData',
   component: NoData,
+  tags: ['autodocs'],
 }
 
 export default meta
