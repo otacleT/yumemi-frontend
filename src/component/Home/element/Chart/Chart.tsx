@@ -1,3 +1,4 @@
+import {css} from '@emotion/react'
 import * as Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React, {useMemo, useRef, useState} from 'react'
@@ -73,7 +74,7 @@ export const Chart: React.FC = () => {
   }, [selectedPrefData, dataType, startYear])
 
   return (
-    <div className='w-full lg:w-[calc(65%-10px)]'>
+    <div css={chart}>
       {selectedPrefData.length === 0 ? (
         <NoData />
       ) : (
@@ -85,3 +86,10 @@ export const Chart: React.FC = () => {
     </div>
   )
 }
+
+const chart = css`
+  width: calc(65% - 10px);
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+`
