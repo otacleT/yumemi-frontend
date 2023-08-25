@@ -1,3 +1,178 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/************************************************
+    Reset
+*************************************************/
+
+* {
+  min-height: 0;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+figure,
+figcaption,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+body {
+  text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+table,
+caption,
+th,
+td {
+  font-weight: normal;
+  text-align: left;
+  empty-cells: show;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  margin: 0;
+}
+
+a img,
+iframe {
+  border: none;
+}
+
+a {
+  color: inherit;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: 100%;
+  appearance: none;
+  background: none;
+  vertical-align: bottom;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  margin: 0;
+}
+
+input[type='text'],
+textarea {
+  width: 100%;
+}
+
+address {
+  font-style: normal;
+}
+
+img {
+  backface-visibility: hidden;
+  vertical-align: bottom;
+  max-width: 100%;
+  height: auto;
+}
+
+br {
+  opacity: 0;
+}
+
+a {
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+@media (min-width: 751px) {
+  a[href*='tel:'] {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
