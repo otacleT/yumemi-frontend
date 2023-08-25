@@ -40,6 +40,9 @@ const item = (isChecked: boolean, isLoading: boolean, prefName: PrefectureNameTy
     ? `border: 2px solid ${prefColors[prefName]}; color: ${prefColors[prefName]};`
     : 'border: 2px solid #e0e0e0;'}
   ${isLoading && 'pointer-events: none;'}
+  :focus {
+    border: 2px solid #6b7280;
+  }
   ::before {
     display: flex;
     height: 20px;
@@ -53,9 +56,6 @@ const item = (isChecked: boolean, isLoading: boolean, prefName: PrefectureNameTy
       : isChecked
       ? `content: "✓";`
       : 'content: "＋";'}
-  }
-  :focus {
-    border: 2px solid #6b7280;
   }
   @media (max-width: 768px) {
     height: 32px;
