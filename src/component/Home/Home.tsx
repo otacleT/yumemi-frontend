@@ -1,3 +1,4 @@
+import {css} from '@emotion/react'
 import React from 'react'
 
 import {SelectedPrefDataProvider} from '@/component/Home/context/SelectedPrefDataContext'
@@ -15,11 +16,11 @@ type HomeProps = {
  */
 export const Home: React.FC<HomeProps> = ({prefectures}) => {
   return (
-    <section className='mx-auto my-10 w-full max-w-7xl px-4 md:my-20 md:px-5'>
-      <h2 className='text-base font-bold md:text-xl'>都道府県一覧</h2>
+    <section css={container}>
+      <h2 css={sectionTitle}>都道府県一覧</h2>
       <SelectedPrefDataProvider>
         <StartYearProvider>
-          <div className='mt-7 flex w-full flex-wrap items-center justify-between gap-y-7'>
+          <div css={wrapper}>
             <Prefectures prefectures={prefectures} />
             <Chart />
           </div>
@@ -28,3 +29,31 @@ export const Home: React.FC<HomeProps> = ({prefectures}) => {
     </section>
   )
 }
+
+const container = css`
+  width: 100%;
+  max-width: 1280px;
+  margin: 80px auto;
+  padding: 0 20px;
+  @media (max-width: 768px) {
+    margin: 40px auto;
+  }
+`
+
+const sectionTitle = css`
+  font-size: 20px;
+  font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+`
+
+const wrapper = css`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+  gap: 28px 0;
+`
