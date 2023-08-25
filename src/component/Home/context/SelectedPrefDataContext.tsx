@@ -14,8 +14,8 @@ type SelectedPrefDataType = PrefectureType & {
 
 type Action = {type: 'added'; data: SelectedPrefDataType} | {type: 'deleted'; prefCode: number}
 
-const SelectedPrefDataContext = createContext<SelectedPrefDataType[]>([])
-const SelectedPrefDataDispatchContext = createContext<Dispatch<Action> | null>(null)
+export const SelectedPrefDataContext = createContext<SelectedPrefDataType[]>([])
+export const SelectedPrefDataDispatchContext = createContext<Dispatch<Action> | null>(null)
 
 export const SelectedPrefDataProvider = ({children}: {children: ReactNode}) => {
   const [selectedPrefData, dispatch] = useReducer(prefReducer, [])

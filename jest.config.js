@@ -13,6 +13,21 @@ const customJestConfig = {
   // TypeScript の設定で baseUrl をルートディレクトリに設定している場合、alias を動作させるためには以下のようにする必要があります
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
+  testPathIgnorePatterns: ['<rootDir>/e2e/'],
+  collectCoverageFrom: [
+    '**/component/**/*.{ts,tsx}',
+    '!**/*.stories.{ts,tsx}',
+    '!**/context/**',
+    '!**/lib/**',
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 70,
+      functions: 70,
+      lines: 70,
+      statements: -10,
+    },
+  },
 }
 
 // createJestConfig は、非同期で next/jest が Next.js の設定を読み込めるようにするため、下記のようにエクスポートします

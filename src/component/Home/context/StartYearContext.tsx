@@ -5,7 +5,7 @@ type ContextType = {
   setStartYear: React.Dispatch<React.SetStateAction<number>>
 }
 
-const StartYearContext = createContext<ContextType>({
+export const StartYearContext = createContext<ContextType>({
   startYear: 1960,
   setStartYear: () => {},
 })

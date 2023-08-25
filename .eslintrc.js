@@ -70,6 +70,13 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+    // testing-library
+    'testing-library/no-await-sync-events': [
+      'error',
+      {
+        eventModules: ['fire-event'],
+      },
+    ],
   },
   overrides: [
     {
@@ -81,6 +88,7 @@ module.exports = {
         'next.config.mjs',
         'jest.config.js',
         'tailwind.config.ts',
+        'playwright.config.ts',
       ],
       rules: {
         'import/no-default-export': 'off',

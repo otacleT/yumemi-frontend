@@ -1,4 +1,5 @@
 import type {GetStaticProps, NextPage} from 'next'
+import Head from 'next/head'
 
 import {Home} from '@/component/Home'
 import type {PrefecturesRes} from '@/lib/dto'
@@ -46,10 +47,18 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const HomePage: NextPage<HomePageProps> = ({error, prefectures}) => {
-  if (error) {
-    return <div className='py-10 text-center'>都道府県一覧の取得に失敗しました。</div>
-  }
-  return <Home prefectures={prefectures} />
+  return (
+    <>
+      <Head>
+        <title>株式会社ゆめみのフロントエンド技術課題</title>
+      </Head>
+      {error ? (
+        <div className='py-10 text-center'>都道府県一覧の取得に失敗しました。</div>
+      ) : (
+        <Home prefectures={prefectures} />
+      )}
+    </>
+  )
 }
 
 export default HomePage

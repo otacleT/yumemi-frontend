@@ -5,6 +5,7 @@ import {Chart} from '.'
 const meta: Meta<typeof Chart> = {
   title: 'Chart',
   component: Chart,
+  tags: ['autodocs'],
 }
 
 export default meta
