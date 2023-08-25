@@ -8,7 +8,6 @@ const notoSansJP = Noto_Sans_JP({
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-noto-sans-jp',
 })
 
 /**
@@ -17,7 +16,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export const Layout = ({children}: {children: React.ReactNode}) => {
   return (
-    <div className={`${notoSansJP.variable} font-sans`}>
+    <div className={notoSansJP.className}>
       <Header />
       <main>{children}</main>
       <Footer />

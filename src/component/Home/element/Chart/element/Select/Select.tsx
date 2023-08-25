@@ -1,3 +1,4 @@
+import {css} from '@emotion/react'
 import Image from 'next/image'
 import React from 'react'
 
@@ -15,9 +16,9 @@ type SelectProps = {
 
 export const Select: React.FC<SelectProps> = ({dataType, setDataType}) => {
   return (
-    <div className='relative text-right'>
+    <div css={imgParent}>
       <select
-        className='relative cursor-pointer appearance-none rounded-lg border-2 border-gray-300 py-2 pl-3 pr-9 text-sm hover:border-gray-500 focus-visible:outline-gray-500 md:pl-4 md:pr-10 md:text-base'
+        css={select}
         defaultValue={dataType}
         onChange={(e) => setDataType(e.target.value as DisplayDataType)}
       >
@@ -31,8 +32,41 @@ export const Select: React.FC<SelectProps> = ({dataType, setDataType}) => {
         alt='下矢印のアイコン画像'
         width={20}
         height={20}
-        className='pointer-events-none absolute right-2 top-1/2 -translate-y-1/2'
+        css={img}
       />
     </div>
   )
 }
+
+const imgParent = css`
+  position: relative;
+  text-align: right;
+`
+
+const select = css`
+  cursor: pointer;
+  appearance: none;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  padding: 8px 40px 8px 16px;
+  font-size: 16px;
+  :hover {
+    border: 2px solid #6b7280;
+  }
+  :focus-visible {
+    outline: none;
+    border: 2px solid #6b7280;
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 8px 36px 8px 12px;
+  }
+`
+
+const img = css`
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+`
