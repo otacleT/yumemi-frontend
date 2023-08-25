@@ -9,7 +9,6 @@ module.exports = {
     'next/core-web-vitals',
     'prettier',
     'plugin:storybook/recommended',
-    'plugin:tailwindcss/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -87,7 +86,6 @@ module.exports = {
         '**/*.stories.tsx',
         'next.config.mjs',
         'jest.config.js',
-        'tailwind.config.ts',
         'playwright.config.ts',
       ],
       rules: {
