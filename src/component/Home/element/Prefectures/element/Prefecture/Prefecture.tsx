@@ -35,6 +35,7 @@ const item = (isChecked: boolean, isLoading: boolean, prefName: PrefectureNameTy
   justify-content: center;
   border-radius: 16px;
   font-size: 16px;
+  cursor: pointer;
   ${isChecked
     ? `border: 2px solid ${prefColors[prefName]}; color: ${prefColors[prefName]};`
     : 'border: 2px solid #e0e0e0;'}
@@ -52,6 +53,9 @@ const item = (isChecked: boolean, isLoading: boolean, prefName: PrefectureNameTy
       : isChecked
       ? `content: "✓";`
       : 'content: "＋";'}
+  }
+  :focus {
+    border: 2px solid #6b7280;
   }
   @media (max-width: 768px) {
     height: 32px;
