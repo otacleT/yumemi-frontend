@@ -42,6 +42,7 @@ const button = (isChecked: boolean, isLoading: boolean, prefName: PrefectureName
   justify-content: center;
   border-radius: 16px;
   font-size: 16px;
+  color: #000;
   cursor: pointer;
   ${isChecked
     ? `border: 2px solid ${prefColors[prefName]}; color: ${prefColors[prefName]};`
