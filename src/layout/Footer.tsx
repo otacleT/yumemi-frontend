@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
 
 const container = css`
   width: 100%;
-  padding: 0 20px;
+  padding: 30px 0;
   text-align: center;
 `
 

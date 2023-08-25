@@ -24,7 +24,7 @@ const container = css`
     bottom: 0;
     left: 0;
     display: block;
-    height: 2px;
+    height: 4px;
     width: 100%;
     transform: translateY(100%);
     background: linear-gradient(90deg, rgba(65, 164, 253, 1) 0%, rgba(103, 126, 250, 1) 100%);
