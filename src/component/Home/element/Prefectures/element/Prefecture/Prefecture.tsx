@@ -13,13 +13,13 @@ type PrefectureProps = PrefectureType
 export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
   const {handleSelect, isChecked, isLoading} = usePrefecture()
   return (
-    <li>
+    <li css={item}>
       <button
         onClick={() => {
           handleSelect({prefCode, prefName})
         }}
         disabled={isLoading}
-        css={item(isChecked, isLoading, prefName)}
+        css={button(isChecked, isLoading, prefName)}
       >
         {prefName}
       </button>
@@ -27,7 +27,14 @@ export const Prefecture: React.FC<PrefectureProps> = ({prefCode, prefName}) => {
   )
 }
 
-const item = (isChecked: boolean, isLoading: boolean, prefName: PrefectureNameType) => css`
+const item = css`
+  height: 36px;
+  @media (max-width: 768px) {
+    height: 32px;
+  }
+`
+
+const button = (isChecked: boolean, isLoading: boolean, prefName: PrefectureNameType) => css`
   display: flex;
   height: 36px;
   width: 100%;
