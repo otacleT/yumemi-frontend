@@ -40,7 +40,7 @@ const item = (isChecked: boolean, isLoading: boolean, prefName: PrefectureNameTy
     ? `border: 2px solid ${prefColors[prefName]}; color: ${prefColors[prefName]};`
     : 'border: 2px solid #e0e0e0;'}
   ${isLoading && 'pointer-events: none;'}
-  :focus {
+  :focus-visible {
     border: 2px solid #6b7280;
   }
   ::before {
