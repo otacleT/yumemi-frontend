@@ -14,6 +14,12 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
   testPathIgnorePatterns: ['<rootDir>/e2e/'],
+  collectCoverageFrom: [
+    '**/component/**/*.{ts,tsx}',
+    '!**/*.stories.{ts,tsx}',
+    '!**/context/**',
+    '!**/lib/**',
+  ],
   coverageThreshold: {
     global: {
       branches: 70,
