@@ -13,6 +13,9 @@ const mockStartYearFn = jest.fn()
 global.alert = jest.fn()
 
 describe('Prefecture', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
   // Arrange
   const mockData: PrefectureType = {
     prefCode: 1,
@@ -48,9 +51,19 @@ describe('Prefecture', () => {
     await userEvent.click(button)
 
     // Assert
-    expect(
-      (await screen.findByText(mockData.prefName)).classList.contains('before:content-["✓"]')
-    ).toBe(true)
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'added',
+      data: {
+        prefName: mockData.prefName,
+        prefCode: mockData.prefCode,
+        data: {
+          totalPopulation: [12817],
+          youthPopulation: [2906],
+          workingAgePopulation: [8360],
+          elderlyPopulation: [1550],
+        },
+      },
+    })
   })
 
   test('uncheck button', async () => {
@@ -69,9 +82,10 @@ describe('Prefecture', () => {
     await userEvent.click(button)
 
     // Assert
-    expect(
-      (await screen.findByText(mockData.prefName)).classList.contains('before:content-["＋"]')
-    ).toBe(true)
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'deleted',
+      prefCode: mockData.prefCode,
+    })
   })
 
   test('fetch error', async () => {

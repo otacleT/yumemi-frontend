@@ -1,3 +1,4 @@
+import {css} from '@emotion/react'
 import React from 'react'
 
 import {Prefecture} from '@/component/Home/element/Prefectures/element/Prefecture'
@@ -13,7 +14,7 @@ type PrefecturesProps = {
 
 export const Prefectures: React.FC<PrefecturesProps> = ({prefectures}) => {
   return (
-    <ul className='grid h-60 w-full grid-cols-auto-fit gap-2 overflow-y-auto md:h-auto lg:w-[calc(35%-10px)]'>
+    <ul css={list}>
       {prefectures?.map((prefecture: PrefectureType) => {
         return (
           <Prefecture
@@ -26,3 +27,18 @@ export const Prefectures: React.FC<PrefecturesProps> = ({prefectures}) => {
     </ul>
   )
 }
+
+const list = css`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 4px;
+  height: auto;
+  overflow-y: auto;
+  width: calc(35% - 10px);
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    height: 240px;
+  }
+`

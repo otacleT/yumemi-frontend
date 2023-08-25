@@ -1,5 +1,4 @@
-import type {Dispatch, ReactNode} from 'react'
-import {createContext, useContext, useReducer} from 'react'
+import React, {createContext, useContext, useReducer} from 'react'
 
 import type {PrefectureType} from '@/type/PrefectureType'
 
@@ -15,9 +14,9 @@ type SelectedPrefDataType = PrefectureType & {
 type Action = {type: 'added'; data: SelectedPrefDataType} | {type: 'deleted'; prefCode: number}
 
 export const SelectedPrefDataContext = createContext<SelectedPrefDataType[]>([])
-export const SelectedPrefDataDispatchContext = createContext<Dispatch<Action> | null>(null)
+export const SelectedPrefDataDispatchContext = createContext<React.Dispatch<Action> | null>(null)
 
-export const SelectedPrefDataProvider = ({children}: {children: ReactNode}) => {
+export const SelectedPrefDataProvider = ({children}: {children: React.ReactNode}) => {
   const [selectedPrefData, dispatch] = useReducer(prefReducer, [])
 
   return (
