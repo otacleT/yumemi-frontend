@@ -50,6 +50,7 @@ const select = css`
   border: 2px solid #e0e0e0;
   padding: 8px 40px 8px 16px;
   font-size: 16px;
+  color: #000;
   :hover {
     border: 2px solid #6b7280;
   }
